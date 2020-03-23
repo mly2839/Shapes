@@ -1,0 +1,71 @@
+//Description: Class that extends shape and is a specified shape
+//Author: Michael Ly
+//Date: 3/3/2020
+//Version: 1.0
+
+import java.text.DecimalFormat;
+
+public class Rectangle extends Shape{
+
+    private double length;
+    private double width;
+
+    public Rectangle(){
+        super();
+        length = 0.0;
+        width = 0.0;
+    }
+
+    public Rectangle(String s, double length, double width){
+        super(s);
+        this.length = length;
+        this.width = width;
+    }
+
+    public double getLength() {
+        return length;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getArea(){
+        return length * width;
+    }
+
+    public double getPerimeter(){
+        return (2 * length) + (2 * width);
+    }
+
+    public String toString() {
+        double a = getArea();
+        double p = getPerimeter();
+        DecimalFormat d = new DecimalFormat("#00.00");
+        return super.toString() + ", Length = " + getLength() + ", Width = " + getWidth() + "\n"
+                + " Area = " + d.format(a) + ", Perimeter = " + d.format(p);
+    }
+
+    public Object clone(){
+        return new Rectangle("Red",this.length, this.width);
+    }
+
+    public int compareTo(Shape obj) {
+        if(obj.getArea() == this.getArea()){
+            return 0;
+        }
+        else if(obj.getArea() < this.getArea()){
+            return 1;
+        }
+        else{
+            return -1;
+        }    }
+}
