@@ -1,0 +1,76 @@
+import static java.util.Arrays.sort;
+
+public class TestShapes {
+
+    public static void main(String[] args) {
+
+        Shape[] shapeObjects = new Shape[8];
+        shapeObjects[0] = new Circle("Black", 2.5);
+        shapeObjects[1] = new Rectangle("Red", 5, 3);
+        shapeObjects[2] = new Triangle("Green", 6, 6, 8);
+        shapeObjects[3] = new Octagon("Yellow", 7);
+
+        shapeObjects[4] = (Shape) shapeObjects[0].clone();
+        shapeObjects[5] = (Shape) shapeObjects[1].clone();
+        shapeObjects[6] = (Shape) shapeObjects[2].clone();
+        shapeObjects[7] = (Shape) shapeObjects[3].clone();
+
+        ((Circle)shapeObjects[4]).setRadius(1.5);
+        ((Octagon)shapeObjects[7]).setSide(2.5);
+        ((Rectangle)shapeObjects[5]).setLength(20);
+
+        System.out.println("Before Sort");
+        System.out.println("-----------");
+        System.out.print((shapeObjects[0]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[1]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[2]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[3]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[4]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[5]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[6]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[7]).toString());
+
+        sort(shapeObjects);
+
+        System.out.println();
+        System.out.println();
+        System.out.println("After Sort");
+        System.out.println("----------");
+        System.out.print((shapeObjects[0]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[1]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[2]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[3]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[4]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[5]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[6]).toString());
+        System.out.println();
+        System.out.print((shapeObjects[7]).toString());
+        System.out.println();
+        System.out.println();
+
+        double p = getAverageOfPerimeters(shapeObjects);
+        System.out.printf("The average perimeter of all the objects is %2.2f", p);
+    }
+
+    public static double getAverageOfPerimeters(Shape[] list){
+        double p = 0;
+        for (int i = 0; i < list.length; i++){
+            p += list[i].getPerimeter();
+        }
+        return p/8;
+    }
+
+}
