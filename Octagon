@@ -1,0 +1,61 @@
+//Description: Class that extends shape and is a specified shape
+//Author: Michael Ly
+//Date: 3/3/2020
+//Version: 1.0
+
+import java.text.DecimalFormat;
+
+public class Octagon extends Shape{
+
+    private double side;
+
+    public Octagon(){
+        super();
+        side = 0.0;
+    }
+
+    public Octagon(String s, double side){
+        super(s);
+        this.side = side;
+    }
+
+    public double getSide() {
+        return side;
+    }
+
+    public void setSide(double side) {
+        this.side = side;
+    }
+
+    public double getArea(){
+        return 2 + 2 * (Math.sqrt(2)) * Math.pow(side, 2);
+    }
+
+    public double getPerimeter(){
+        return 8 * side;
+    }
+
+    public String toString() {
+        double a = getArea();
+        double p = getPerimeter();
+        DecimalFormat d = new DecimalFormat("#00.00");
+        return super.toString() + ", Side = " + getSide() + "\n"
+                + " Area = " + d.format(a) + ", Perimeter = " + d.format(p);
+    }
+
+    public Object clone() {
+        return new Octagon("Yellow", this.side);
+    }
+
+    public int compareTo(Shape obj) {
+        if(obj.getArea() == this.getArea()){
+            return 0;
+        }
+        else if(obj.getArea() < this.getArea()){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+}
